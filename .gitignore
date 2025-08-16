@@ -1,0 +1,14 @@
+# Python / Django
+*.pyc
+__pycache__/
+venv/
+db.sqlite3
+
+# Node / Frontend
+node_modules/
+dist/
+.vite/
+
+# Entornos / secretos
+.env
+
