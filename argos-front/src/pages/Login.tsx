@@ -7,8 +7,8 @@ import {
 } from '@mui/material'
 
 export default function LoginPage() {
-  const [username, setUsername] = useState('mathboy')
-  const [password, setPassword] = useState('math')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const navigate = useNavigate()

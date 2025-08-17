@@ -6,8 +6,8 @@ interface Props {
 }
 
 export default function Login({ onLogin }: Props) {
-  const [username, setUsername] = useState('mathboy')
-  const [password, setPassword] = useState('math')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
