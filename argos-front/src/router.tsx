@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from './App';
 import LoginPage from './pages/Login';
@@ -6,7 +7,7 @@ import TablaEstados from './pages/TablaEstados';
 import Proyeccion from './pages/Proyeccion';
 import Tesoreria from './pages/Tesoreria';
 
-function Protected({ children }: { children: JSX.Element }) {
+function Protected({ children }: { children: ReactElement }) {
   const access = localStorage.getItem('access');
   if (!access) return <Navigate to="/login" replace />;
   return children;

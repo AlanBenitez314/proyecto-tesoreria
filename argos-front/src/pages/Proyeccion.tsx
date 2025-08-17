@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { getProyeccion } from '../services/proyeccion'
 import {
   Stack, FormControl, InputLabel, Select, MenuItem, Checkbox, FormControlLabel,
-  ToggleButton, ToggleButtonGroup, Grid, Paper, Typography, Divider
+  ToggleButton, ToggleButtonGroup, Paper, Typography, Divider, Box
 } from '@mui/material'
 
 export default function Proyeccion() {
@@ -54,20 +54,27 @@ export default function Proyeccion() {
 
       {data && (
         <Paper variant="outlined" sx={{ p:2 }}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={4}>
+          {/* 3 columnas responsive */}
+          <Box
+            sx={{
+              display: 'grid',
+              gap: 2,
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, 1fr)' },
+            }}
+          >
+            <Box>
               <Typography variant="body2" color="text.secondary">Total esperado</Typography>
               <Typography variant="h6">${data.total_esperado.toLocaleString()}</Typography>
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </Box>
+            <Box>
               <Typography variant="body2" color="text.secondary">Total proyectado</Typography>
               <Typography variant="h6">${data.total_proyectado.toLocaleString()}</Typography>
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </Box>
+            <Box>
               <Typography variant="body2" color="text.secondary">Pagado real</Typography>
               <Typography variant="h6">${data.pagado_real.toLocaleString()}</Typography>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
 
           <Divider sx={{ my:2 }} />
           <pre style={{ margin:0 }}>{JSON.stringify(data, null, 2)}</pre>

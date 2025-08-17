@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { marcarEstado } from '../services/estados';
-import { MenuItem, Select, SelectChangeEvent, CircularProgress } from '@mui/material';
+import { MenuItem, Select, CircularProgress } from '@mui/material';
+import type { SelectChangeEvent } from '@mui/material/Select';
 
 type Props = {
   miembroId: number;
