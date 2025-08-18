@@ -1,21 +1,19 @@
-import type { ReactElement } from "react";
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import App from './App';
+import App from './App'; // tu App actual con Miembros/Tabla/Proyección/Tesorería
 import LoginPage from './pages/Login';
 import Miembros from './pages/Miembros';
 import TablaEstados from './pages/TablaEstados';
 import Proyeccion from './pages/Proyeccion';
 import Tesoreria from './pages/Tesoreria';
-import SuscripcionesPage from './pages/SuscripcionesPage';
-import MovimientosPage from './pages/Movimientos';
+import Movimientos from './pages/Movimientos';
 
-function Protected({ children }: { children: ReactElement }) {
+function Protected({ children }: any) {
   const access = localStorage.getItem('access');
   if (!access) return <Navigate to="/login" replace />;
   return children;
 }
 
-export const router = createBrowserRouter([
+export const routerCamara = createBrowserRouter([
   { path: '/login', element: <LoginPage /> },
   {
     path: '/',
@@ -25,8 +23,7 @@ export const router = createBrowserRouter([
       { path: 'tabla', element: <Protected><TablaEstados /></Protected> },
       { path: 'proyeccion', element: <Protected><Proyeccion /></Protected> },
       { path: 'tesoreria', element: <Protected><Tesoreria /></Protected> },
-      { path: 'suscripciones', element: <Protected><SuscripcionesPage /></Protected> },
-      { path: 'movimientos', element: <Protected><MovimientosPage /></Protected> },
+      { path: 'movimientos', element: <Protected><Movimientos /></Protected> },
     ],
   },
 ]);

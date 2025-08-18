@@ -20,8 +20,8 @@ export default function App() {
           <Stack direction="row" spacing={1}>
             <Button component={RouterLink} to="/" color="inherit">Miembros</Button>
             <Button component={RouterLink} to="/tabla" color="inherit">Tabla</Button>
-            <Button component={RouterLink} to="/proyeccion" color="inherit">Proyección</Button>
-            <Button component={RouterLink} to="/tesoreria" color="inherit">Tesorería</Button>
+            <Button component={RouterLink} to="/suscripciones" color="inherit">Capitas</Button>
+            <Button component={RouterLink} to="/movimientos" color="inherit">Movimientos</Button>
           </Stack>
           <Box sx={{ flex: 1 }} />
           <IconButton color="inherit" onClick={logout} size="small" title="Salir">

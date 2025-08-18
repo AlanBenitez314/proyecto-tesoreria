@@ -1,0 +1,1 @@
+export default function MiCuenta(){ return <div>Mi cuenta</div>; }

@@ -1,3 +1,4 @@
+// EstadoCell.tsx
 import { useState } from 'react';
 import { marcarEstado } from '../services/estados';
 import { MenuItem, Select, CircularProgress } from '@mui/material';
@@ -17,23 +18,24 @@ export default function EstadoCell({ miembroId, anio, mes, value, onChangeLocal 
 
   async function handleChange(e: SelectChangeEvent) {
     const next = e.target.value as 'pagada' | 'debe' | 'exento';
-
-    // Optimistic update
     setVal(next);
     onChangeLocal?.(next);
-
     setLoading(true);
     try {
       await marcarEstado({ miembro_id: miembroId, anio, mes, estado: next });
     } catch (err) {
       console.error(err);
-      // Revertir si falla
       setVal(value);
       onChangeLocal?.(value);
     } finally {
       setLoading(false);
     }
   }
+
+  const bg =
+    val === 'pagada' ? 'success.light' :
+    val === 'debe'   ? 'error.light'   :
+                       'grey.200';
 
   return (
     <>
@@ -42,7 +44,16 @@ export default function EstadoCell({ miembroId, anio, mes, value, onChangeLocal 
         value={val}
         onChange={handleChange}
         disabled={loading}
-        sx={{ minWidth: 110 }}
+        sx={{
+          minWidth: 120,
+          '& .MuiSelect-select': {
+            bgcolor: bg,
+            // opcional: un poco de “pill”
+            borderRadius: 1,
+            textAlign: 'center',
+            py: 0.5,
+          },
+        }}
       >
         <MenuItem value="pagada">Pagada</MenuItem>
         <MenuItem value="debe">Debe</MenuItem>
