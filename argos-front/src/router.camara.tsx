@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import App from './App'; // tu App actual con Miembros/Tabla/Proyección/Tesorería
 import LoginPage from './pages/Login';
 import Miembros from './pages/Miembros';
@@ -6,6 +6,7 @@ import TablaEstados from './pages/TablaEstados';
 import Proyeccion from './pages/Proyeccion';
 import Tesoreria from './pages/Tesoreria';
 import Movimientos from './pages/Movimientos';
+import { Navigate } from 'react-router-dom';
 
 function Protected({ children }: any) {
   const access = localStorage.getItem('access');
@@ -24,6 +25,7 @@ export const routerCamara = createBrowserRouter([
       { path: 'proyeccion', element: <Protected><Proyeccion /></Protected> },
       { path: 'tesoreria', element: <Protected><Tesoreria /></Protected> },
       { path: 'movimientos', element: <Protected><Movimientos /></Protected> },
+      { path: '*', element: <Navigate to="/" replace /> },
     ],
   },
 ]);

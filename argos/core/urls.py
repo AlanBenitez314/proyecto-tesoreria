@@ -19,5 +19,7 @@ urlpatterns = [
     path("estados/inicializar-anio/", inicializar_anio),
     path("miembros/criticos/", miembros_criticos),
 
+    path("me/", me),
+
     path("", include(router.urls)),
 ]

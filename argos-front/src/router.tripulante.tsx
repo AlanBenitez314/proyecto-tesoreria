@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import AppTripulante from './apps/AppTripulante';
 import LoginPage from './pages/Login';
 import MiCuenta from './pages/MiCuenta'; // la que muestra estados + movimientos
+import { Navigate } from 'react-router-dom';
 
 function Protected({ children }: any) {
   const access = localStorage.getItem('access');
@@ -17,6 +18,7 @@ export const routerTripulante = createBrowserRouter([
     children: [
       { index: true, element: <Protected><MiCuenta /></Protected> },
       { path: 'mi', element: <Protected><MiCuenta /></Protected> },
+      { path: '*', element: <Navigate to="/" replace /> },
     ],
   },
 ]);

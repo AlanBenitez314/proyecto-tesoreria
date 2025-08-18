@@ -28,6 +28,16 @@ class EstadoMensualViewSet(viewsets.ModelViewSet):
     serializer_class = EstadoMensualSerializer
 
 
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def me(request):
+    u = request.user
+    return Response({
+        "id": u.id,
+        "username": u.username,
+        "is_staff": u.is_staff,
+        "email": u.email or "",
+    })
 
 @api_view(["GET"])
 @permission_classes([AllowAny])
